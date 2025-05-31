@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Controle de Estoque</title>
+  <link rel="stylesheet" href="css/style.css">
+  <script defer src="js/script.js"></script>
+</head>
+<body>
+  <div class="sidebar">
+    <h2>Data Estoque</h2>
+    <ul>
+      <li class="active" data-view="dashboard"><i>🏠</i> Início</li>
+
+      <li class="section-title">GERENCIAMENTO</li>
+      <li data-view="produtos"><i>📦</i> Produtos</li>
+      <li data-view="categorias"><i>🗂️</i> Categorias</li>
+      <li data-view="fornecedores"><i>🚚</i> Fornecedores</li>
+
+      <li class="section-title">MOVIMENTAÇÃO</li>
+      <li data-view="entradas"><i>➕</i> Entradas</li>
+      <li data-view="saidas"><i>➖</i> Saídas</li>
+    </ul>
+  </div>
+
+  <div class="main">
+    <div class="header">
+      <div class="user-info">Você está logado como <strong> admin</strong></div>
+    </div>
+    <div id="view-container"></div>
+    <div class="footer">&copy; 2025 Controle de Estoque</div>
+  </div>
+</body>
+</html>
