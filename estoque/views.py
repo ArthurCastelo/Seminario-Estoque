@@ -1,10 +1,26 @@
 from rest_framework import mixins, viewsets
 from .models import Produto, Saida, Pedido
-from .serializers import ProdutoSerializer, SaidaSerializer, PedidoSerializer
+from .serializers import ProdutoSerializer, SaidaSerializer, PedidoSerializer,FornecedorSerializer, EntradaSerializer
 import requests
+from .models import Fornecedor, Entrada
 
 TELEGRAM_BOT_TOKEN = '7713715877:AAFCoJZCfndfyje_uaEB5zwI_JykxAMuaDk'
 TELEGRAM_CHAT_ID = '-4867105687'
+
+
+
+class FornecedorViewSet(viewsets.ModelViewSet):
+    queryset = Fornecedor.objects.all()
+    serializer_class = FornecedorSerializer
+
+class EntradaViewSet(viewsets.ReadOnlyModelViewSet):
+    queryset = Entrada.objects.all()
+    serializer_class = EntradaSerializer
+
+class SaidaViewSet(viewsets.ReadOnlyModelViewSet):
+    queryset = Saida.objects.all()
+    serializer_class = SaidaSerializer
+    
 
 def notificar_telegram(msg):
     url = f"https://api.telegram.org/bot{TELEGRAM_BOT_TOKEN}/sendMessage"
@@ -33,11 +49,7 @@ class ProdutoViewSet(viewsets.ModelViewSet):
                            f"Se precisar, estamos aqui para ajudar com novos produtos! 😊")
         instance.delete()
 
-class SaidaViewSet(mixins.ListModelMixin,
-                   mixins.RetrieveModelMixin,
-                   viewsets.GenericViewSet):
-    queryset = Saida.objects.all()
-    serializer_class = SaidaSerializer
+
 
 class PedidoViewSet(viewsets.ModelViewSet):
     queryset = Pedido.objects.all()
